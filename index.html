@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app='unit2app'>
+  <head>
+    <meta charset="utf-8">
+    <base href="/">
+
+    <title>Angular Unit 2</title>
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+  </head>
+  <body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Home</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" ng-controller="HeaderController">
+      <ul class="nav navbar-nav">
+        <li ng-class="{active: isActive('/bio')}"><a href="/bio">Bio</a></li>
+        <li ng-class="{ active: isActive('/projects')}"><a href="/projects">Projects</a></li>
+        <li ng-class="{ active: isActive('/resume')}"><a href="/resume">Resume</a></li>
+        <li ng-class="{ active: isActive('/filter')}"><a href="/filter">Filter Practice</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class = "container">
+
+
+<div ng-view></div>
+
+
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src = 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.min.js'></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-route.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/controllers.js"></script>
+    <script type="text/javascript" src="js/directives.js"></script>
+    <script type="text/javascript" src="js/filters.js"></script>
+    <script type="text/javascript" src="js/services.js"></script>
+  </body>
+</html>
