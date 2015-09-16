@@ -44,16 +44,32 @@ app.controller('Divide', function($scope, $routeParams) {
 });
 
 app.controller('Ajax', function($scope, $http) {
- $http.get('https://api.github.com/zen')
+  $scope.title = "HTTP Service!";
+  $http.get('https://api.github.com/zen')
   .then(function(data){
     $scope.zenData = data.data;
   });
+  $scope.getMessages =function(){
+    $http.get('https://shielded-peak-6345.herokuapp.com/messages')
+    .success(function(data){
+      $scope.messages = data;
+    });
+  };
+  $scope.sendMessage = function(){
+    $http.post('https://shielded-peak-6345.herokuapp.com/messages', {message:{name:$scope.userName, content:$scope.userContent}})
+    .then(function(data){
+      $scope.userName = $scope.userContent = ('');
+      $scope.confirm = "Message sent!";
+    });
+  };
 });
 
 
+app.controller('Movie', function($scope, $routeParams) {
+  $scope.title = "Angular OMDb API Search";
+  $scope.message = "Practice and Stuff.";
 
-
-
+});
 
 
 

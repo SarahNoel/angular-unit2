@@ -1,0 +1,40 @@
+<h1> {{title}} </h1>
+
+<p>{{message}}</p>
+
+
+
+<div ng-controller="Ajax">
+
+As Confusious would say, {{zenData.toLowerCase()}}
+
+<h3> Messages from our People</h3>
+<button class = 'btn btn-primary'ng-click="show = !show; getMessages()">Show Messages</button>
+<button class = 'btn btn-primary'ng-click="show1 = !show1">Send Message</button>
+<br>
+<br>
+<br>
+<div ng-show='show1'>
+<form class="form-inline" role="form">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" class="form-control" name='userName' ng-model="userName">
+  </div>
+  <div class="form-group">
+    <label for="content">Message:</label>
+    <input type="text" class="form-control" name='userContent' ng-model="userContent">
+    </div>
+  <button ng-click='sendMessage()' type="submit" class="btn btn-default">Send Message</button>
+</form>
+</div>
+<br>
+<div ng-show='show'>
+<div ng-repeat = "content in messages">
+
+<p>{{content.name}} - {{content.content}}</p>
+
+</div>
+</div>
+
+</div>
+

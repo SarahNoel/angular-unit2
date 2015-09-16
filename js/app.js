@@ -30,11 +30,37 @@ app.config(function($routeProvider, $locationProvider) {
       templateUrl: 'partials/division.html',
       controller: 'Divide'
     })
+      .when('/ajax', {
+      templateUrl: 'partials/ajax.html',
+      controller: 'Ajax'
+    })
       .otherwise({
       redirectTo: '/'
-  });
+
+    })
+      .when('/movie', {
+      templateUrl: 'partials/movie.html',
+      controller: 'Movie'
+    });
     $locationProvider.html5Mode(true);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
