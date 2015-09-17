@@ -22,21 +22,23 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" ng-controller="HeaderController">
       <ul class="nav navbar-nav">
         <li ng-class="{active: isActive('/bio')}"><a href="/bio">Bio</a></li>
+
         <li ng-class="{ active: isActive('/projects')}"><a href="/projects">Projects</a></li>
+
         <li ng-class="{ active: isActive('/resume')}"><a href="/resume">Resume</a></li>
+
         <li ng-class="{ active: isActive('/filter')}"><a href="/filter">Filter Practice</a></li>
+
         <li ng-class="{ active: isActive('/ajax')}"><a href="/ajax">HTTP Service</a></li>
-        <li ng-class="{ active: isActive('/movie')}"><a href="/movie">Movie App</a></li
+
+        <li ng-class="{ active: isActive('/movie')}"><a href="/movie">Movie App</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 <div class = "container">
 
-
 <div ng-view></div>
-
-
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src = 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.min.js'></script>
