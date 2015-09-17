@@ -1,1 +1,42 @@
 /* add custom styles */
+.movie-page{
+  text-align: center;
+}
+
+
+.movie-box{
+  border: thin gray solid;
+  margin: 10px;
+  width: 300px;
+  height: 100px;
+  float: left;
+  text-align: left;
+  padding: 10px;
+  color: #008080;
+}
+
+.lighter{
+  font-weight: 400;
+}
+
+.movie-box:hover {
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+
+.specificMovie{
+  border: thin gray solid;
+  margin-top: 15px;
+}
+
+.poster{
+  float: left;
+}
+
+
+.deets{
+  float: left;
+  margin-left: 15px;
+}

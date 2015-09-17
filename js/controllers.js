@@ -65,10 +65,24 @@ app.controller('Ajax', function($scope, $http) {
 });
 
 
-app.controller('Movie', function($scope, $routeParams) {
-  $scope.title = "Angular OMDb API Search";
-  $scope.message = "Practice and Stuff.";
-
+app.controller('Movie', function($scope, $http) {
+  $scope.movieSearch = function () {
+  $scope.show = false;
+    var movie = 'http://www.omdbapi.com/?s='+$scope.movieTitle +'&r=json';
+    $http.get(movie)
+    .success(function(data){
+      $scope.movies = data.Search;
+    });
+  };
+  $scope.pickMovie = function () {
+    $scope.show = true;
+    var movie = 'http://www.omdbapi.com/?i='+ this.movie.imdbID +'&r=json';
+    console.log(movie);
+    $http.get(movie)
+    .success(function(data){
+      $scope.pickMovie = data;
+    });
+  };
 });
 
 

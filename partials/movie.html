@@ -1,3 +1,74 @@
-<h1> {{title}} </h1>
+<div class = 'movie-page'>
+  <h1> Angular OMDb API Search </h1>
 
-<p>{{message}}</p>
+
+  <h4>Enter a movie by title:</h4>
+  <form>
+    <input ng-model='movieTitle' placeholder="Jurassic Park" required>
+    <br><br>
+
+    <button ng-click='movieSearch()' type='submit' class= 'btn btn-primary'>Search! &nbsp<span class = 'glyphicon glyphicon-arrow-right'></span></button>
+  </form<>
+
+  <div class='container' id='searchResults' ng-hide='show'>
+    <div class= 'movie-box' ng-repeat= 'movie in movies' ng-click='pickMovie()' >
+    <h4>{{movie.Title}}</h4>
+    <p>year: {{movie.Year}}</p>
+
+  </div>
+  </div>
+
+  </div>
+  <div class='specificMovie container' ng-show='show'>
+  <h1>{{pickMovie.Title}}</h1>
+
+  <img class= 'poster' src = "{{pickMovie.Poster}}">
+
+  <div class = 'deets'>
+    <h4> Additional Details</h4>
+
+    <h5>Starring: <span class='lighter'>{{pickMovie.Actors}}</span></h5>
+
+    <p>{{pickMovie.Plot}}</p>
+
+    <h5>Awards</h5>
+    {{pickMovie.Awards}}
+
+    <h5>Country</h5>
+    {{pickMovie.Country}}
+
+    <h5>Director</h5>
+    {{pickMovie.Director}}
+
+    <h5>Language</h5>
+    {{pickMovie.Language}}
+
+    <h5>Metascore</h5>
+    {{pickMovie.Metascore}}
+
+    <h5>Rated</h5>
+    {{pickMovie.Rated}}
+
+    <h5>Released</h5>
+    {{pickMovie.Released}}
+
+    <h5>Runtime</h5>
+    {{pickMovie.Runtime}}
+
+    <h5>Title</h5>
+    {{pickMovie.Title}}
+
+    <h5>Writer</h5>
+    {{pickMovie.Writer}}
+
+    <h5>Year</h5>
+    {{pickMovie.Year}}
+
+    <h5>IMDB Rating</h5>
+    {{pickMovie.imdbRating}}
+  </div>
+
+
+
+
+</div> <!--end movie page -->
