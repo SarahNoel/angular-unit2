@@ -33,9 +33,6 @@ app.config(function($routeProvider, $locationProvider) {
       .when('/ajax', {
       templateUrl: 'partials/ajax.html',
       controller: 'Ajax'
-    })
-      .otherwise({
-      redirectTo: '/'
 
     })
       .when('/movie', {

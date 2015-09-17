@@ -13,10 +13,12 @@
   text-align: left;
   padding: 10px;
   color: #008080;
+  overflow: hidden;
 }
 
 .lighter{
   font-weight: 400;
+  font-size: 14px;
 }
 
 .movie-box:hover {
@@ -33,10 +35,17 @@
 
 .poster{
   float: left;
+  height: 300px;
 }
 
 
 .deets{
-  float: left;
-  margin-left: 15px;
+  margin-left: 225px;
+
 }
+
+.search-results{
+  margin: auto;
+  width: 95%;
+}
+

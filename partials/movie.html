@@ -5,12 +5,15 @@
   <h4>Enter a movie by title:</h4>
   <form>
     <input ng-model='movieTitle' placeholder="Jurassic Park" required>
-    <br><br>
-
+     <div class="form-group">
+      <div class="checkbox">
+        <label><input ng-model='tomato' type="checkbox"> Show Rotten Tomatoes Data</label>
+      </div>
+  </div>
     <button ng-click='movieSearch()' type='submit' class= 'btn btn-primary'>Search! &nbsp<span class = 'glyphicon glyphicon-arrow-right'></span></button>
   </form<>
 
-  <div class='container' id='searchResults' ng-hide='show'>
+  <div class='container search-results' id='searchResults' ng-hide='show'>
     <div class= 'movie-box' ng-repeat= 'movie in movies' ng-click='pickMovie()' >
     <h4>{{movie.Title}}</h4>
     <p>year: {{movie.Year}}</p>
@@ -20,52 +23,74 @@
 
   </div>
   <div class='specificMovie container' ng-show='show'>
-  <h1>{{pickMovie.Title}}</h1>
+  <h1>{{movieData.Title}}</h1>
 
-  <img class= 'poster' src = "{{pickMovie.Poster}}">
+  <img class= 'poster' src = "{{movieDataPic}}">
 
   <div class = 'deets'>
-    <h4> Additional Details</h4>
+    <h3> Additional Details</h3>
 
-    <h5>Starring: <span class='lighter'>{{pickMovie.Actors}}</span></h5>
+    <h4>Starring: <span class='lighter'>{{movieData.Actors}}</span></h4>
 
-    <p>{{pickMovie.Plot}}</p>
+    <p>{{movieData.Plot}}</p>
 
-    <h5>Awards</h5>
-    {{pickMovie.Awards}}
+    <h4>Awards</h4>
+    {{movieData.Awards}}
 
-    <h5>Country</h5>
-    {{pickMovie.Country}}
+    <h4>Country</h4>
+    {{movieData.Country}}
 
-    <h5>Director</h5>
-    {{pickMovie.Director}}
+    <h4>Director</h4>
+    {{movieData.Director}}
 
-    <h5>Language</h5>
-    {{pickMovie.Language}}
+    <h4>Language</h4>
+    {{movieData.Language}}
 
-    <h5>Metascore</h5>
-    {{pickMovie.Metascore}}
+    <h4>Metascore</h4>
+    {{movieData.Metascore}}
 
-    <h5>Rated</h5>
-    {{pickMovie.Rated}}
+    <h4>Rated</h4>
+    {{movieData.Rated}}
 
-    <h5>Released</h5>
-    {{pickMovie.Released}}
+    <h4>Released</h4>
+    {{movieData.Released}}
 
-    <h5>Runtime</h5>
-    {{pickMovie.Runtime}}
+    <h4>Runtime</h4>
+    {{movieData.Runtime}}
 
-    <h5>Title</h5>
-    {{pickMovie.Title}}
+    <h4>Title</h4>
+    {{movieData.Title}}
 
-    <h5>Writer</h5>
-    {{pickMovie.Writer}}
+    <h4>Writer</h4>
+    {{movieData.Writer}}
 
-    <h5>Year</h5>
-    {{pickMovie.Year}}
+    <h4>Year</h4>
+    {{movieData.Year}}
 
-    <h5>IMDB Rating</h5>
-    {{pickMovie.imdbRating}}
+    <h4>IMDB Rating</h4>
+    {{movieData.imdbRating}}
+
+    <div ng-show='tomatoInfo'>
+
+    <h4>Critics' Tomato Consensus</h4>
+    {{movieData.tomatoConsensus}}
+
+    <h4>Tomato Fresh</h4>
+    {{movieData.tomatoFresh}}
+
+    <h4>Tomato Rotten</h4>
+    {{movieData.tomatoRotten}}
+
+    <h4>Tomato Critic Meter</h4>
+    {{movieData.tomatoMeter}}
+
+    <h4>Tomato User Meter</h4>
+    {{movieData.tomatoUserMeter}}
+
+    <h4>Tomato User Rating</h4>
+    {{movieData.tomatoUserRating}}
+
+    </div>
   </div>
 
 

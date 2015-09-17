@@ -75,12 +75,26 @@ app.controller('Movie', function($scope, $http) {
     });
   };
   $scope.pickMovie = function () {
+    var movie;
     $scope.show = true;
-    var movie = 'http://www.omdbapi.com/?i='+ this.movie.imdbID +'&r=json';
-    console.log(movie);
+    movie = 'http://www.omdbapi.com/?i='+ this.movie.imdbID +'&plot=full&r=json';
+    if($scope.tomato === true){
+      $scope.tomatoInfo = true;
+      movie = movie +'&tomatoes=true';
+    }
+    if($scope.tomato === false){
+      $scope.tomatoInfo = false;
+    }
     $http.get(movie)
     .success(function(data){
-      $scope.pickMovie = data;
+      $scope.movieData = data;
+      $scope.picURL = 'https://api.themoviedb.org/3/find/tt0111161?api_key=31dbddb5b365067fc336786bf1983c21&external_source=imdb_id';
+    });
+    var movie2 = 'https://api.themoviedb.org/3/find/'+ this.movie.imdbID +'?api_key=31dbddb5b365067fc336786bf1983c21&external_source=imdb_id';
+    $http.get(movie2)
+    .success(function(data){
+      var picPath = data.movie_results[0].poster_path;
+      $scope.movieDataPic = 'http://image.tmdb.org/t/p/original' + picPath;
     });
   };
 });
