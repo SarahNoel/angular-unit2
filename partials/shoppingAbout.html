@@ -1,0 +1,27 @@
+<div class = 'container'>
+
+<h1> Welcome to MEAN Tea!</h1>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/shopping"><span class='glyphicon glyphicon-cutlery'></span> </a>
+    </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" ng-controller="HeaderController">
+      <ul class="nav navbar-nav">
+        <li ng-class="{active: isActive('/shopping')}"><a href="/shopping">Home</a></li>
+
+        <li ng-class="{ active: isActive('/shopping/about')}"><a href="/shopping/about">About</a></li>
+
+        <li ng-class="{ active: isActive('/shopping/contact')}"><a href="/shopping/contact">Contact</a></li>
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<h1> {{title}} </h1>
+
+
+
+</div>

@@ -43,60 +43,25 @@ app.controller('Divide', ['$scope', '$routeParams', function($scope, $routeParam
   $scope.num2 = $routeParams.num2;
 }]);
 
-app.controller('Ajax', ['$scope', '$http', function($scope, $http) {
+app.controller('Ajax', ['$scope', '$http', 'AjaxService', function($scope, $http, AjaxService) {
   $scope.title = "HTTP Service!";
-  $http.get('https://api.github.com/zen')
-  .then(function(data){
-    $scope.zenData = data.data;
-  });
-  $scope.getMessages =function(){
-    $http.get('https://shielded-peak-6345.herokuapp.com/messages')
-    .success(function(data){
-      $scope.messages = data;
-    });
+  AjaxService.zenGet($scope, $http);
+  $scope.getMessages = function(){
+    AjaxService.getMessages($scope, $http);
   };
   $scope.sendMessage = function(){
-    $http.post('https://shielded-peak-6345.herokuapp.com/messages', {message:{name:$scope.userName, content:$scope.userContent}})
-    .then(function(data){
-      $scope.userName = $scope.userContent = ('');
-      $scope.confirm = "Message sent!";
-    });
+    AjaxService.sendMessage($scope, $http);
   };
 }]);
 
 
-app.controller('Movie', ['$scope', '$http', function($scope, $http) {
+app.controller('Movie', ['$scope', '$http', 'MovieService', function($scope, $http, MovieService) {
   $scope.movieSearch = function () {
-  $scope.show = false;
-    var movie = 'http://www.omdbapi.com/?s='+$scope.movieTitle +'&r=json';
-    $http.get(movie)
-    .success(function(data){
-      $scope.movies = data.Search;
-    });
+    MovieService.showAllResults($scope, $http);
   };
   $scope.pickMovie = function () {
-    var movie;
-    $scope.show = true;
-    movie = 'http://www.omdbapi.com/?i='+ this.movie.imdbID +'&plot=full&r=json';
-    if($scope.tomato === true){
-      $scope.tomatoInfo = true;
-      movie = movie +'&tomatoes=true';
-    }
-    if($scope.tomato === false){
-      $scope.tomatoInfo = false;
-    }
-    $http.get(movie)
-    .success(function(data){
-      $scope.movieData = data;
-      $scope.picURL = 'https://api.themoviedb.org/3/find/tt0111161?api_key=31dbddb5b365067fc336786bf1983c21&external_source=imdb_id';
-    });
-    var movie2 = 'https://api.themoviedb.org/3/find/'+ this.movie.imdbID +'?api_key=31dbddb5b365067fc336786bf1983c21&external_source=imdb_id';
-    $http.get(movie2)
-    .success(function(data){
-      var picPath = data.movie_results[0].poster_path;
-      $scope.movieDataPic = 'http://image.tmdb.org/t/p/original' + picPath;
-    });
-  };
+   MovieService.pickOneMovie($scope, $http, this);
+ };
 }]);
 
 
@@ -113,6 +78,67 @@ app.controller('OneContact', ['$scope', '$routeParams', '$http', 'ContactList', 
     var userId = $routeParams.id;
     ContactList.singleContact($scope, $http, userId);
 }]);
+
+
+
+app.controller('ShoppingAbout', ['$scope', '$http', 'ShoppingList', function($scope, $http, ShoppingList){
+    $scope.title = 'About us!';
+}]);
+
+app.controller('ShoppingContact', ['$scope', '$http', 'ShoppingList', function($scope, $http, ShoppingList){
+    $scope.title = 'Contact Us!';
+}]);
+
+
+app.controller('Shopping', ['$scope', '$http', 'ShoppingList', function($scope, $http, ShoppingList){
+  $scope.teaList = ShoppingList.teaList;
+  $scope.shoppingBag = ShoppingList.shoppingBag;
+  var TeaInBag = function(tea, quantity){
+    this.tea = tea;
+    this.quantity = quantity;
+  };
+  $scope.addToBag= function(){
+    var newTea;
+    if($scope.shoppingBag.length === 0){
+      newTea = new TeaInBag(this.tea, $scope.quantity);
+      console.log(newTea);
+      $scope.shoppingBag.push(newTea);
+      console.log($scope.shoppingBag);
+    }else{
+      for (var i = 0; i < $scope.shoppingBag.length; i++) {
+        console.log($scope.shoppingBag);
+        if($scope.shoppingBag.indexOf(this.tea) != -1){
+
+          console.log('already there!');
+        }
+      }
+  }
+
+};
+
+
+}]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -76,7 +76,26 @@ app.filter('redact', function () {
 });
 
 
+app.filter('moneyBags', function(){
+  return function (input){
+    input = input.toString().split('');
+    var index = input.length - 2;
+    input.splice(index, 0, '.');
+    input.splice(0, 0, '$');
+    return input.join().replace(/,/g , "");
+  };
+});
 
+app.filter('trueYes', function () {
+  return function(input){
+    if(input === true){
+      return "Yes";
+    }
+    else{
+      return "No";
+    }
+  };
+});
 
 
 

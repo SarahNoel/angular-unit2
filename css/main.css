@@ -64,3 +64,67 @@
 .profile-pic{
   height: 175px;
 }
+
+.tea-table{
+  padding: 10px;
+  clear: both;
+  width: 100%;
+
+}
+.right{
+  text-align: right;
+  float: right;
+}
+
+.smaller-input{
+  width: 50px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.tea-info{
+  padding: 15px;
+}
+
+.tea-title{
+  float: left
+}
+
+.tea-body{
+  clear: both;
+}
+
+.tea-table-header{
+  padding: 10px;
+}
+
+.all-tea-info{
+  width: 85%;
+  margin: auto;
+}
+
+.tea-page-title{
+  color: orange;
+  font-style: italic;
+}
+
+.search-bar{
+  width: 200px;
+}
+
+.right-bar{
+  float: right;
+}
+
+.tea-pic{
+  width: 300px;
+}
+
+.checkout{
+  width: 150px;
+  text-align: center;
+}
+
+.bold{
+  font-weight: bold;
+}

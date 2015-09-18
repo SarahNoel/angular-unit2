@@ -46,6 +46,18 @@ app.config(function($routeProvider, $locationProvider) {
       .when('/contact/:id', {
       templateUrl: 'partials/oneContact.html',
       controller: 'OneContact'
+    })
+      .when('/shopping', {
+      templateUrl: 'partials/shopping.html',
+      controller: 'Shopping'
+    })
+      .when('/shopping/about', {
+      templateUrl: 'partials/shoppingAbout.html',
+      controller: 'ShoppingAbout'
+    })
+      .when('/shopping/contact', {
+      templateUrl: 'partials/shoppingContact.html',
+      controller: 'ShoppingContact'
     });
     $locationProvider.html5Mode(true);
 });
