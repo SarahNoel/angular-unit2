@@ -1,0 +1,39 @@
+<div class = 'contacts'>
+  <h3>My Peeps</h3>
+
+<form class="form-inline" role="form" name="newContactData">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input name="name" ng-model="name" type="text" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="email">Email address:</label>
+    <input ng-model="email" name='email' type="email" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="pnum">Phone Number:</label>
+    <input name="phone" ng-model="phone" type="tel" class="form-control">
+  </div>
+  <button ng-click="newContact()"type="submit" class="btn btn-success">Add Contact</button>
+</form>
+<br>
+<br>
+<form class="form-inline">
+<label for="search">Search  <span class="glyphicon glyphicon-search"></span></label>
+<input ng-model="search" type="text" class="form-control">
+</form>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+    </tr>
+  <tr ng-class-odd="'fill'" ng-repeat="contact in contacts | filter: search ">
+  <td><a href = '/contact/{{contact.id}}'> {{contact.name}}</a></td>
+  <td> {{contact.email}}</td>
+  <td> {{contact.phone}}</td>
+</tr>
+</table>
+</div>

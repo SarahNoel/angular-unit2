@@ -6,7 +6,7 @@ app.config(function($routeProvider, $locationProvider) {
       templateUrl: 'partials/home.html',
       controller: 'HomeController'
     })
-    .when('/bio', {
+    .when('/bio' , {
       templateUrl: 'partials/bio.html',
       controller: 'Bio'
     })
@@ -38,6 +38,14 @@ app.config(function($routeProvider, $locationProvider) {
       .when('/movie', {
       templateUrl: 'partials/movie.html',
       controller: 'Movie'
+    })
+      .when('/contacts', {
+      templateUrl: 'partials/contacts.html',
+      controller: 'ContactsApp'
+    })
+      .when('/contact/:id', {
+      templateUrl: 'partials/oneContact.html',
+      controller: 'OneContact'
     });
     $locationProvider.html5Mode(true);
 });

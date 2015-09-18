@@ -1,4 +1,4 @@
-app.controller('HeaderController',['$scope', '$location', function($location, $scope) {
+app.controller('HeaderController',['$scope', '$location', function($scope, $location) {
   $scope.isActive = function (viewLocation) {
     return viewLocation === $location.path();
   };
@@ -99,14 +99,20 @@ app.controller('Movie', ['$scope', '$http', function($scope, $http) {
   };
 }]);
 
-//minified code
-//app.controller("HeaderController",["$scope","$location",function(e,t){t.isActive=function(t){return t===e.path()}}]),app.controller("HomeController",["$scope",function(e){e.title="Welcome!",e.message="This is the home page."}]),app.controller("Projects",["$scope",function(e){e.title="Projects!",e.message="These are my projects."}]),app.controller("Resume",["$scope",function(e){e.title="Resume!",e.message="This is my resume."}]),app.controller("Bio",["$scope",function(e){e.title="Biography!",e.message="This is my life story."}]),app.controller("Filter",["$scope",function(e){e.title="Filters!",e.message="Let's practice some filters."}]),app.controller("Add",["$scope","$routeParams",function(e,t){e.title="Addition!",e.message="Math and Stuff.",e.num1=t.num1,e.num2=t.num2}]),app.controller("Divide",["$scope","$routeParams",function(e,t){e.title="Division!",e.message="Math and Stuff.",e.num1=t.num1,e.num2=t.num2}]),app.controller("Ajax",["$scope","$http",function(e,t){e.title="HTTP Service!",t.get("https://api.github.com/zen").then(function(t){e.zenData=t.data}),e.getMessages=function(){t.get("https://shielded-peak-6345.herokuapp.com/messages").success(function(t){e.messages=t})},e.sendMessage=function(){t.post("https://shielded-peak-6345.herokuapp.com/messages",{message:{name:e.userName,content:e.userContent}}).then(function(){e.userName=e.userContent="",e.confirm="Message sent!"})}}]),app.controller("Movie",["$scope","$http",function(e,t){e.movieSearch=function(){e.show=!1;var o="http://www.omdbapi.com/?s="+e.movieTitle+"&r=json";t.get(o).success(function(t){e.movies=t.Search})},e.pickMovie=function(){var o;e.show=!0,o="http://www.omdbapi.com/?i="+this.movie.imdbID+"&plot=full&r=json",e.tomato===!0&&(e.tomatoInfo=!0,o+="&tomatoes=true"),e.tomato===!1&&(e.tomatoInfo=!1),t.get(o).success(function(t){e.movieData=t,e.picURL="https://api.themoviedb.org/3/find/tt0111161?api_key=31dbddb5b365067fc336786bf1983c21&external_source=imdb_id"});var s="https://api.themoviedb.org/3/find/"+this.movie.imdbID+"?api_key=31dbddb5b365067fc336786bf1983c21&external_source=imdb_id";t.get(s).success(function(t){var o=t.movie_results[0].poster_path;e.movieDataPic="http://image.tmdb.org/t/p/original"+o})}}]);
+
+app.controller('ContactsApp', ['$scope', '$http', 'ContactList', function($scope, $http, ContactList){
+    $scope.contacts = ContactList.contacts;
+    $scope.newContact = function(){
+      ContactList.addContact($scope, $http);
+    };
+}]);
 
 
-
-
-
-
+app.controller('OneContact', ['$scope', '$routeParams', '$http', 'ContactList', function($scope, $routeParams, $http, ContactList){
+    $scope.contacts = ContactList.contacts;
+    var userId = $routeParams.id;
+    ContactList.singleContact($scope, $http, userId);
+}]);
 
 
 

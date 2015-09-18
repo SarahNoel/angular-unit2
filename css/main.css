@@ -3,6 +3,9 @@
   text-align: center;
 }
 
+.center{
+  text-align: center;
+}
 
 .movie-box{
   border: thin gray solid;
@@ -49,3 +52,15 @@
   width: 95%;
 }
 
+.contacts{
+  text-align: left;
+  margin-left: 15px;
+}
+
+.fill{
+  background-color: #e0eaf4
+}
+
+.profile-pic{
+  height: 175px;
+}
