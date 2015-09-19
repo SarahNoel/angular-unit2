@@ -89,10 +89,14 @@ app.controller('ShoppingContact', ['$scope', '$http', 'ShoppingList', function($
     $scope.title = 'Contact Us!';
 }]);
 
-
 app.controller('Shopping', ['$scope', '$http', 'ShoppingList', function($scope, $http, ShoppingList){
   $scope.teaList = ShoppingList.teaList;
   $scope.shoppingBag = ShoppingList.shoppingBag;
+  $scope.optionArray = [];
+  ShoppingList.starter($scope);
+  $scope.checkoutFunction = function(){
+    $scope.checkout = true;
+  };
   $scope.addToBag= function(){
     var TeaInBag = function(tea, quantity){
       this.tea = tea;
@@ -121,18 +125,13 @@ app.controller('Shopping', ['$scope', '$http', 'ShoppingList', function($scope, 
       }
     }
   };
-  $scope.checkoutFunction = function(){
-    $scope.checkout = true;
-  };
   $scope.updateCheckout = function(){
     $scope.edit = false;
     var subtotal;
     var grandTotal = 0;
     for (var i = 0; i < $scope.shoppingBag.length; i++) {
      subtotal= $scope.shoppingBag[i].tea.price * parseFloat($scope.shoppingBag[i].quantity);
-     console.log(subtotal);
      grandTotal = parseFloat(grandTotal) + parseFloat(subtotal);
-     console.log(grandTotal);
     }
     $scope.grandTotal = grandTotal;
   };
@@ -146,30 +145,4 @@ app.controller('Shopping', ['$scope', '$http', 'ShoppingList', function($scope, 
   $scope.editCheckout = function(){
     $scope.edit = true;
   };
-
 }]);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

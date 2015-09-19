@@ -123,39 +123,6 @@ app.factory('AjaxService', function(){
 app.factory('ShoppingList', function(){
   var ShoppingList = {};
   ShoppingList.shoppingBag = [];
-
-  // ShoppingList.addToBag= function($scope, place){
-  //   var TeaInBag = function(tea, quantity){
-  //     place.tea = tea;
-  //     place.quantity = quantity;
-  //   };
-  //     var quantity = place.teaQuantity;
-  //     if(quantity === undefined){
-  //       quantity = 1;
-  //     }
-  //     if(quantity === 0){
-  //       return;
-  //     }
-  //     var newTea = new TeaInBag(place.tea, quantity);
-  //     if($scope.shoppingBag.length === 0){
-  //       $scope.shoppingBag.push(newTea);
-  //       console.log($scope.shoppingBag);
-  //       return;
-  //     }else{
-  //       for (var i = 0; i < $scope.shoppingBag.length; i++) {
-  //         console.log($scope.shoppingBag);
-  //         if($scope.shoppingBag[i].tea === place.tea){
-  //           $scope.shoppingBag[i].quantity = parseFloat($scope.shoppingBag[i].quantity) + parseFloat(quantity);
-  //             console.log($scope.shoppingBag);
-  //             return;
-  //         }else{
-  //           $scope.shoppingBag.push(newTea);
-  //           console.log($scope.shoppingBag);
-  //           return;
-  //         }
-  //       }
-  //     }
-  //   };
   ShoppingList.teaList = [
     {
       "_id": "55c8ee82152165d244b98300",
@@ -279,10 +246,15 @@ app.factory('ShoppingList', function(){
       "categories": ["spring", "warm","winter"]
     }
   ];
-
-
-
-
+  ShoppingList.starter = function($scope){
+    for (var i = 0; i < $scope.teaList.length; i++) {
+      for (var j = 0; j < $scope.teaList[i].categories.length; j++) {
+        if($scope.optionArray.indexOf($scope.teaList[i].categories[j]) === -1){
+          $scope.optionArray.push($scope.teaList[i].categories[j]);
+        }
+      }
+    }
+  };
 
   return ShoppingList;
 });
