@@ -128,3 +128,33 @@
 .bold{
   font-weight: bold;
 }
+
+.tea-picture{
+  float: left;
+  clear: both;
+}
+
+.checkout-table{
+  float: left;
+  clear: left;
+}
+
+.vertical-top{
+  vertical-align: top;
+  margin: auto;
+  padding-top: 20px;
+}
+
+.centered{
+  margin: auto;
+  display: table;
+}
+
+.quantity-input{
+  width: 50px;
+}
+
+.place-order{
+  float: right;
+  margin: 10px;
+}

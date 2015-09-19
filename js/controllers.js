@@ -93,29 +93,59 @@ app.controller('ShoppingContact', ['$scope', '$http', 'ShoppingList', function($
 app.controller('Shopping', ['$scope', '$http', 'ShoppingList', function($scope, $http, ShoppingList){
   $scope.teaList = ShoppingList.teaList;
   $scope.shoppingBag = ShoppingList.shoppingBag;
-  var TeaInBag = function(tea, quantity){
-    this.tea = tea;
-    this.quantity = quantity;
-  };
   $scope.addToBag= function(){
-    var newTea;
+    var TeaInBag = function(tea, quantity){
+      this.tea = tea;
+      this.quantity = quantity;
+    };
+    var quantity = this.teaQuantity;
+    if(quantity === undefined){
+      quantity = 1;
+    }
+    if(quantity === 0){
+      return;
+    }
+    var newTea = new TeaInBag(this.tea, quantity);
     if($scope.shoppingBag.length === 0){
-      newTea = new TeaInBag(this.tea, $scope.quantity);
-      console.log(newTea);
       $scope.shoppingBag.push(newTea);
-      console.log($scope.shoppingBag);
+      return;
     }else{
       for (var i = 0; i < $scope.shoppingBag.length; i++) {
-        console.log($scope.shoppingBag);
-        if($scope.shoppingBag.indexOf(this.tea) != -1){
-
-          console.log('already there!');
+        if($scope.shoppingBag[i].tea === this.tea){
+          $scope.shoppingBag[i].quantity = parseFloat($scope.shoppingBag[i].quantity) + parseFloat(quantity);
+            return;
+        }else{
+          $scope.shoppingBag.push(newTea);
+          return;
         }
       }
-  }
-
-};
-
+    }
+  };
+  $scope.checkoutFunction = function(){
+    $scope.checkout = true;
+  };
+  $scope.updateCheckout = function(){
+    $scope.edit = false;
+    var subtotal;
+    var grandTotal = 0;
+    for (var i = 0; i < $scope.shoppingBag.length; i++) {
+     subtotal= $scope.shoppingBag[i].tea.price * parseFloat($scope.shoppingBag[i].quantity);
+     console.log(subtotal);
+     grandTotal = parseFloat(grandTotal) + parseFloat(subtotal);
+     console.log(grandTotal);
+    }
+    $scope.grandTotal = grandTotal;
+  };
+  $scope.removeCheckout = function(){
+    for (var i = 0; i < $scope.shoppingBag.length; i++) {
+      if($scope.shoppingBag[i].tea.name === this.tea.tea.name){
+        $scope.shoppingBag.splice(i, 1);
+      }
+    }
+  };
+  $scope.editCheckout = function(){
+    $scope.edit = true;
+  };
 
 }]);
 

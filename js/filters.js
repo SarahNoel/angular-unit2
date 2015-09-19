@@ -98,7 +98,15 @@ app.filter('trueYes', function () {
 });
 
 
-
+app.filter('checkoutBag', function(){
+  return function(input){
+    if (input === 0){
+      return "Empty!";
+    }else{
+      return '(' + input + ')';
+    }
+  };
+});
 
 
 
