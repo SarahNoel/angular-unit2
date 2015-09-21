@@ -108,6 +108,25 @@ app.filter('checkoutBag', function(){
   };
 });
 
+app.filter('pokeMoves', function(){
+  return function(input){
+    var useMoves = [];
+    for (var i = 0; i < 6; i++) {
+      useMoves.push(input[i].name);
+    }
+    return useMoves.join().replace(/,/g , ", ");
+  };
+});
+
+app.filter('pokeTypes', function(){
+  return function(input){
+    var useTypes = [];
+    for (var i = 0; i < input.length; i++) {
+      useTypes.push(input[i].name);
+    }
+    return useTypes.join().replace(/,/g , ", ");
+  };
+});
 
 
 

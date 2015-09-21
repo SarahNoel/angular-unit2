@@ -58,6 +58,10 @@ app.config(function($routeProvider, $locationProvider) {
       .when('/shopping/contact', {
       templateUrl: 'partials/shoppingContact.html',
       controller: 'ShoppingContact'
+    })
+      .when('/pokemon', {
+      templateUrl: 'partials/pokemon.html',
+      controller: 'Pokemon'
     });
     $locationProvider.html5Mode(true);
 });

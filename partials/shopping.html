@@ -19,14 +19,14 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-
 <div class='all-tea-info' ng-hide='checkout'>
 <div class = 'tea-search header'>
 <form class="navbar-form navbar-left" role="search">
    Search by Category:
   <select ng-model='selectedCategory' class= 'dropdown'>
+  <option value=' '>Show All</option>
   <option ng-repeat='category in optionArray' value='{{category}}'>{{ category }}</option>
-  </select>
+  </select> &nbsp
         Search: <input name='search' ng-model='search' type="text" class="form-control search-bar" placeholder="Search"></form>
 
         <button class='right btn btn-sm btn-danger checkout' ng-click='checkoutFunction(); updateCheckout()'><span class ='bold'>Checkout | </span> Bag:  {{shoppingBag.length | checkoutBag}}</button>

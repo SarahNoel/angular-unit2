@@ -260,7 +260,22 @@ app.factory('ShoppingList', function(){
 });
 
 
-
+// app.factory('PokeService', function(){
+//   var PokeService = {};
+// PokeService.getPokemon = function($scope, $http){
+//   var index = Math.floor((Math.random()*151));
+//   $http.get("http://pokeapi.co/api/v1/pokemon/" + index + "/")
+//     .success(function(data){
+//       $scope.pokemonData=data;
+//     });
+//   $http.get("http://pokeapi.co/api/v1/sprite/" + index + "/")
+//   .success(function(data){
+//     $scope.spriteData=data;
+//     $scope.spriteImage = "http://pokeapi.co" + data.image;
+//   });
+//   };
+//   return PokeService;
+// });
 
 
 

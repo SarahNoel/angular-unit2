@@ -146,3 +146,21 @@ app.controller('Shopping', ['$scope', '$http', 'ShoppingList', function($scope, 
     $scope.edit = true;
   };
 }]);
+
+app.controller('Pokemon', ['$scope', '$http', function($scope, $http) {
+  $scope.title = "Pokemon!";
+  $scope.message = "Gotta catch em all.";
+  var index = Math.floor((Math.random()*151));
+  $http.get("http://pokeapi.co/api/v1/pokemon/" + index + "/")
+    .success(function(data){
+      $scope.pokemonData=data;
+    });
+  $http.get("http://pokeapi.co/api/v1/sprite/" + index + "/")
+  .success(function(data){
+    $scope.spriteData=data;
+    $scope.spriteImage = "http://pokeapi.co" + data.image;
+  });
+}]);
+
+
+
