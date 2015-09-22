@@ -1,9 +1,19 @@
-<h1> {{title}} </h1>
+<h1 class='center'> {{title}} </h1>
 
-<p>{{message}}</p>
+<p class='center'>{{message}}</p>
+
+<button class= 'btn btn-warning poke-btn' ng-click='newPokes()'>Get new Pokemon</button>
 
 
 
 
 
-<pokemon-details pokemon-data="pokemonData" sprite-data = "spriteData" sprite-image="spriteImage"></pokemon-details>
+<pokemon-details pokemon-data="pokemonData[0]" sprite-image="spriteImage[0]"></pokemon-details>
+
+<pokemon-details pokemon-data="pokemonData[1]" sprite-image="spriteImage[1]"></pokemon-details>
+
+<pokemon-details pokemon-data="pokemonData[2]" sprite-image="spriteImage[2]"></pokemon-details>
+
+<pokemon-details pokemon-data="pokemonData[3]" sprite-image="spriteImage[3]"></pokemon-details>
+
+<pokemon-details pokemon-data="pokemonData[4]" sprite-image="spriteImage[4]"></pokemon-details>

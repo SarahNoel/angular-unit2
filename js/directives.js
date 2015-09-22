@@ -14,12 +14,83 @@ app.directive('gsYoyoDetails', function() {
 
 app.directive('pokemonDetails', function() {
   return {
+    restrict:'E',
     templateUrl: 'partials/directives/poke-details.html',
     scope: {
       pokemon: '=pokemonData',
-      sprite: '=spriteData',
       spriteImage: '=spriteImage',
-
     }
   };
 });
+
+app.directive('gsChangeBackground', function() {
+  return {
+    restrict:'A',
+    link: function(scope, element, attrs) {
+
+      var oldColor = element.css('background-color');
+      var oldTextColor = element.css('color');
+      var newColor;
+      var newTextColor;
+
+      element.on('keyup', function (){
+        newColor = scope.background;
+        newTextColor = scope.text;
+      });
+
+      element.on('mouseenter', function(event) {
+        element.css({'background-color':newColor, 'color':newTextColor});
+      });
+
+      element.on('mouseleave', function(event) {
+        element.css({'background-color': oldColor, 'color':oldTextColor});
+      });
+    }
+  };
+});
+
+
+app.directive('imageCarousel', function() {
+  return {
+    restrict:'A',
+    scope:true,
+    link: function(scope, element, attrs) {
+
+      var oldColor = element.css('background-color');
+      var oldTextColor = element.css('color');
+
+      element.on('keyup', function (){
+        newColor = scope.background;
+        newTextColor = scope.text;
+      });
+
+      element.on('mouseenter', function(event) {
+        element.css({'background-color':newColor, 'color':newTextColor});
+      });
+
+      element.on('mouseleave', function(event) {
+        element.css({'background-color': oldColor, 'color':oldTextColor});
+      });
+    }
+  };
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -162,3 +162,18 @@
 .logo{
   height: 200px;
 }
+
+.poke-title{
+color: mediumturquoise;
+}
+
+.poke-btn{
+  margin: auto;
+  display: table;
+}
+
+.color-inputs{
+  background-color: white;
+  text-align: center;
+  margin-bottom: 10px;
+}

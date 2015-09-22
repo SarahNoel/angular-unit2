@@ -2,12 +2,31 @@
 
 <p>{{message}}</p>
 
-
-<gs-angular-logo></gs-angular-logo>
-
-
+<br>
+<br>
 
 
-<h3>{{yoyo.name}}</h3>
+<div gs-change-background style="background-color: green">
+<div class='color-inputs'>
+ <h5>Enter a color and mouseover to see the change!</h5>
+ Text Color
+<input ng-model= 'text' placeholder='Text Color'>
+Background Color
+<input ng-model= 'background' placeholder='Background Color'>
+</div>
+<br>
+<br>
+<h3 class ='center'>Hello World!</h3>
+<br>
+<br>
+</div>
 
-<img class = 'logo' ng-src="{{yoyo.img}}">
+<br>
+<br>
+
+<h3 class = 'center'>Carousel of Images</h3>
+<div image-carousel>
+{{image1}}
+
+
+</div>

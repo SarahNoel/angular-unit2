@@ -46,6 +46,7 @@ app.factory('ContactList', function() {
           });
         }
     };
+
   ContactList.singleContact = function($scope, $http, userId){
     var useName;
     for (var i = 0; i < $scope.contacts.length; i++) {
@@ -60,6 +61,7 @@ app.factory('ContactList', function() {
 
 app.factory('MovieService', function(){
   var MovieService = {};
+
   MovieService.showAllResults = function($scope, $http){
   $scope.show = false;
     var movie = 'http://www.omdbapi.com/?s='+$scope.movieTitle +'&r=json';
@@ -68,6 +70,7 @@ app.factory('MovieService', function(){
       $scope.movies = data.Search;
     });
   };
+
   MovieService.pickOneMovie = function($scope, $http, place){
      var movie;
     $scope.show = true;
@@ -97,18 +100,21 @@ app.factory('MovieService', function(){
 
 app.factory('AjaxService', function(){
   var AjaxService = {};
+
   AjaxService.zenGet = function ($scope, $http){
     $http.get('https://api.github.com/zen')
       .then(function(data){
         $scope.zenData = data.data;
     });
   };
+
   AjaxService.getMessages =function($scope, $http){
     $http.get('https://shielded-peak-6345.herokuapp.com/messages')
     .success(function(data){
       $scope.messages = data;
     });
   };
+
   AjaxService.sendMessage = function($scope, $http){
     $http.post('https://shielded-peak-6345.herokuapp.com/messages', {message:{name:$scope.userName, content:$scope.userContent}})
     .then(function(data){
@@ -122,7 +128,7 @@ app.factory('AjaxService', function(){
 
 app.factory('ShoppingList', function(){
   var ShoppingList = {};
-  ShoppingList.shoppingBag = [];
+
   ShoppingList.teaList = [
     {
       "_id": "55c8ee82152165d244b98300",
@@ -246,6 +252,7 @@ app.factory('ShoppingList', function(){
       "categories": ["spring", "warm","winter"]
     }
   ];
+
   ShoppingList.starter = function($scope){
     for (var i = 0; i < $scope.teaList.length; i++) {
       for (var j = 0; j < $scope.teaList[i].categories.length; j++) {
@@ -256,27 +263,78 @@ app.factory('ShoppingList', function(){
     }
   };
 
+  ShoppingList.addToBag = function($scope, place){
+    var TeaInBag = function(tea, quantity){
+      this.tea = tea;
+      this.quantity = quantity;
+    };
+
+    var quantity = place.teaQuantity;
+    if(quantity === undefined){
+      quantity = 1;
+    }
+    var useTea = place.tea;
+    var newTea = new TeaInBag(useTea, quantity);
+    if($scope.shoppingBag.length === 0){
+      $scope.shoppingBag.push(newTea);
+      return;
+    }else{
+      for (var i = 0; i < $scope.shoppingBag.length; i++) {
+        if($scope.shoppingBag[i].tea === place.tea){
+
+          $scope.shoppingBag[i].quantity = parseFloat($scope.shoppingBag[i].quantity) + parseFloat(quantity);
+            return;
+        }else{
+          $scope.shoppingBag.push(newTea);
+          return;
+        }
+      }
+    }
+  };
+
+  ShoppingList.updateCheckout = function($scope){
+    $scope.edit = false;
+    var subtotal;
+    var grandTotal = 0;
+    for (var i = 0; i < $scope.shoppingBag.length; i++) {
+     subtotal= $scope.shoppingBag[i].tea.price * parseFloat($scope.shoppingBag[i].quantity);
+     grandTotal = parseFloat(grandTotal) + parseFloat(subtotal);
+    }
+    $scope.grandTotal = grandTotal;
+  };
+
+  ShoppingList.removeCheckout = function($scope, place){
+    for (var i = 0; i < $scope.shoppingBag.length; i++) {
+      if($scope.shoppingBag[i].tea.name === place.tea.tea.name){
+        $scope.shoppingBag.splice(i, 1);
+      }
+    }
+  };
   return ShoppingList;
 });
 
 
-// app.factory('PokeService', function(){
-//   var PokeService = {};
-// PokeService.getPokemon = function($scope, $http){
-//   var index = Math.floor((Math.random()*151));
-//   $http.get("http://pokeapi.co/api/v1/pokemon/" + index + "/")
-//     .success(function(data){
-//       $scope.pokemonData=data;
-//     });
-//   $http.get("http://pokeapi.co/api/v1/sprite/" + index + "/")
-//   .success(function(data){
-//     $scope.spriteData=data;
-//     $scope.spriteImage = "http://pokeapi.co" + data.image;
-//   });
-//   };
-//   return PokeService;
-// });
+app.factory('PokeService', function(){
+  var PokeService = {};
 
+  PokeService.getPoke =function(num, $scope, $http){
+    $scope.pokemonData = [];
+    $scope.spriteImage = [];
+    var spriteIndex;
+    var index = Math.floor((Math.random()*151));
+    $http.get("http://pokeapi.co/api/v1/pokemon/" + index + "/")
+      .success(function(data){
+        $scope.pokemonData[num] = data;
+        spriteIndex = data.sprites[0].resource_uri;
+        var spriteUrl = "http://pokeapi.co" + spriteIndex;
+        $http.get(spriteUrl)
+          .success(function(data){
+            $scope.spriteImage[num] = "http://pokeapi.co" + data.image;
+      });
+    });
+  };
+  return PokeService;
+});
 
 
 

@@ -33,7 +33,6 @@ app.config(function($routeProvider, $locationProvider) {
       .when('/ajax', {
       templateUrl: 'partials/ajax.html',
       controller: 'Ajax'
-
     })
       .when('/movie', {
       templateUrl: 'partials/movie.html',
@@ -62,6 +61,12 @@ app.config(function($routeProvider, $locationProvider) {
       .when('/pokemon', {
       templateUrl: 'partials/pokemon.html',
       controller: 'Pokemon'
+    })
+      .when('/directives', {
+      templateUrl: 'partials/directives.html',
+      controller: 'Directives'
+    })
+      .otherwise({redirectTo: '/'
     });
     $locationProvider.html5Mode(true);
 });

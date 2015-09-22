@@ -91,76 +91,44 @@ app.controller('ShoppingContact', ['$scope', '$http', 'ShoppingList', function($
 
 app.controller('Shopping', ['$scope', '$http', 'ShoppingList', function($scope, $http, ShoppingList){
   $scope.teaList = ShoppingList.teaList;
-  $scope.shoppingBag = ShoppingList.shoppingBag;
+  $scope.shoppingBag = [];
   $scope.optionArray = [];
   ShoppingList.starter($scope);
   $scope.checkoutFunction = function(){
     $scope.checkout = true;
   };
   $scope.addToBag= function(){
-    var TeaInBag = function(tea, quantity){
-      this.tea = tea;
-      this.quantity = quantity;
-    };
-    var quantity = this.teaQuantity;
-    if(quantity === undefined){
-      quantity = 1;
-    }
-    if(quantity === 0){
-      return;
-    }
-    var newTea = new TeaInBag(this.tea, quantity);
-    if($scope.shoppingBag.length === 0){
-      $scope.shoppingBag.push(newTea);
-      return;
-    }else{
-      for (var i = 0; i < $scope.shoppingBag.length; i++) {
-        if($scope.shoppingBag[i].tea === this.tea){
-          $scope.shoppingBag[i].quantity = parseFloat($scope.shoppingBag[i].quantity) + parseFloat(quantity);
-            return;
-        }else{
-          $scope.shoppingBag.push(newTea);
-          return;
-        }
-      }
-    }
+    ShoppingList.addToBag($scope, this);
   };
   $scope.updateCheckout = function(){
-    $scope.edit = false;
-    var subtotal;
-    var grandTotal = 0;
-    for (var i = 0; i < $scope.shoppingBag.length; i++) {
-     subtotal= $scope.shoppingBag[i].tea.price * parseFloat($scope.shoppingBag[i].quantity);
-     grandTotal = parseFloat(grandTotal) + parseFloat(subtotal);
-    }
-    $scope.grandTotal = grandTotal;
+    ShoppingList.updateCheckout($scope);
   };
   $scope.removeCheckout = function(){
-    for (var i = 0; i < $scope.shoppingBag.length; i++) {
-      if($scope.shoppingBag[i].tea.name === this.tea.tea.name){
-        $scope.shoppingBag.splice(i, 1);
-      }
-    }
+    ShoppingList.removeCheckout($scope, this);
   };
   $scope.editCheckout = function(){
     $scope.edit = true;
   };
 }]);
 
-app.controller('Pokemon', ['$scope', '$http', function($scope, $http) {
+app.controller('Pokemon', ['$scope', '$http', 'PokeService',function($scope, $http, PokeService) {
   $scope.title = "Pokemon!";
   $scope.message = "Gotta catch em all.";
-  var index = Math.floor((Math.random()*151));
-  $http.get("http://pokeapi.co/api/v1/pokemon/" + index + "/")
-    .success(function(data){
-      $scope.pokemonData=data;
-    });
-  $http.get("http://pokeapi.co/api/v1/sprite/" + index + "/")
-  .success(function(data){
-    $scope.spriteData=data;
-    $scope.spriteImage = "http://pokeapi.co" + data.image;
-  });
+  $scope.newPokes = function(){
+    PokeService.getPoke(0, $scope, $http);
+    PokeService.getPoke(1, $scope, $http);
+    PokeService.getPoke(2, $scope, $http);
+    PokeService.getPoke(3, $scope, $http);
+    PokeService.getPoke(4, $scope, $http);
+  };
+  $scope.newPokes();
+
 }]);
 
+app.controller('Directives', ['$scope', function($scope){
+    $scope.title = 'Directives!';
+    $scope.message = 'Working with custom directives.';
+
+}]);
 
 
