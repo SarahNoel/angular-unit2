@@ -200,3 +200,19 @@ color: mediumturquoise;
   float: right;
   margin-top: -200px;
 }
+
+.thumbnail-preview{
+  display: table;
+  margin: auto;
+}
+
+.little-thumb{
+  height:100px;
+  padding: 5px;
+}
+
+.big-thumb{
+  height: 150px;
+  padding: 5px;
+}
+

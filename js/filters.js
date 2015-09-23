@@ -1,42 +1,32 @@
 app.filter('kebab', function () {
   return function (input) {
-    if(typeof input ==='number'){
-      return input;
-    }
-    else{
     return input.replace(/_/g , "-");
-    }
   };
 });
 
 
 app.filter('camel', function () {
-  var parts;
   return function (input) {
-    if(typeof input ==='number'){
-      return input;
-    }
-    else {
-      for (var i = 0; i < input.length; i++) {
-        if(input.charAt(i) === '-'){
-          parts = input.split('-');
-            for (var j = 1; j < parts.length; j++) {
-              parts[j] = parts[j].charAt(0).toUpperCase() + parts[j].slice(1);
-            }
-            return parts.join().replace(/,/g , "");
-        }
-        if(input.charAt(i) === '_'){
-          parts = input.split('_');
-          for (var k = 1; k < parts.length; k++) {
-            parts[k] = parts[k].charAt(0).toUpperCase() + parts[k].slice(1);
+    var parts;
+    for (var i = 0; i < input.length; i++) {
+      if(input.charAt(i) === '-'){
+        parts = input.split('-');
+          for (var j = 1; j < parts.length; j++) {
+            parts[j] = parts[j].charAt(0).toUpperCase() + parts[j].slice(1);
           }
           return parts.join().replace(/,/g , "");
+      }
+      if(input.charAt(i) === '_'){
+        parts = input.split('_');
+        for (var k = 1; k < parts.length; k++) {
+          parts[k] = parts[k].charAt(0).toUpperCase() + parts[k].slice(1);
         }
+        return parts.join().replace(/,/g , "");
       }
     }
+    return input;
   };
 });
-
 
 
 app.filter('pigLatin', function () {
@@ -127,17 +117,3 @@ app.filter('pokeTypes', function(){
     return useTypes.join().replace(/,/g , ", ");
   };
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-

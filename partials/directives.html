@@ -1,12 +1,27 @@
-<h1> {{title}} </h1>
+<h1 class='center'> {{title}} </h1>
 
-<p>{{message}}</p>
+<p class='center'>{{message}}</p>
 
+<h3 class = 'center'>Carousel of Naughty Cats - You won't believe #7!</h3>
+<div image-carousel>
+<div class ='thumbnail-preview'>
+
+  <img class='little-thumb' src = {{image0}}>
+  <img class='little-thumb' src = {{image1}}>
+  <img class='big-thumb' src = {{image}}>
+  <img class='little-thumb' src = {{image3}}>
+  <img class='little-thumb' src = {{image4}}>
+
+</div>
+<button ng-click='prevPic(image)' class = 'btn left-arrow btn-primary'><span class = 'glyphicon glyphicon-arrow-left'></span> </button>
+<img class='pic-wheel' src = {{image}}>
+<button ng-click='nextPic(image)' class = 'btn right-arrow btn-primary'><span class = 'glyphicon glyphicon-arrow-right'></span> </button>
+
+</div>
 <br>
 <br>
 
-
-<div gs-change-background style="background-color: green">
+<div gs-change-background style="background-color: mediumturquoise">
 <div class='color-inputs'>
  <h5>Enter a color and mouseover to see the change!</h5>
  Text Color
@@ -21,17 +36,6 @@ Background Color
 <br>
 </div>
 
-<br>
-<br>
-
-<h3 class = 'center'>Carousel of Naughty Cats - You won't believe #7!</h3>
-<div image-carousel>
-
-<button ng-click='prevPic(image)' class = 'btn left-arrow btn-success'><span class = 'glyphicon glyphicon-arrow-left'></span> </button>
-<img class='pic-wheel' src = {{image}}>
-<button ng-click='nextPic(image)' class = 'btn right-arrow btn-success'><span class = 'glyphicon glyphicon-arrow-right'></span> </button>
-
-</div>
 <br>
 <br>
 <br>
