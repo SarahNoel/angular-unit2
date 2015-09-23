@@ -1,4 +1,11 @@
 /* add custom styles */
+body{
+font-family: 'Ubuntu', sans-serif;
+}
+
+.header-text{
+  font-family: 'Poiret One', cursive;
+}
 .movie-page{
   text-align: center;
 }
@@ -176,4 +183,20 @@ color: mediumturquoise;
   background-color: white;
   text-align: center;
   margin-bottom: 10px;
+}
+
+.pic-wheel{
+  height: 350px;
+  margin: auto;
+  display: table;
+}
+
+.left-arrow{
+  float: left;
+  margin-top: 160px;
+}
+
+.right-arrow{
+  float: right;
+  margin-top: -200px;
 }
