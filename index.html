@@ -7,7 +7,7 @@
     <title>Angular Unit 2</title>
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/happy.css">
   <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
   </head>
@@ -33,7 +33,7 @@
 
         <li class='header-text' ng-class="{ active: isActive('/projects')}"><a href="/projects">Projects</a></li>
 
-        <li class='header-text' ng-class="{ active: isActive('/resume')}"><a href="/resume">Resume</a></li>
+        <li class='header-text' ng-class="{ active: isActive('/#/resume')}"><a href="/resume">Resume</a></li>
 
         <li class='header-text' ng-class="{ active: isActive('/filter')}"><a href="/filter">Filter Practice</a></li>
 
@@ -57,6 +57,7 @@
 
 <div ng-view></div>
 
+</div>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src = 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.min.js'></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-route.js"></script>

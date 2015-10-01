@@ -52,9 +52,20 @@
 
   <td>
   <div class = 'tea-info'>
-    <div class= 'tea-header'>
-      <h4 class = 'tea-title'>{{tea.name}}</h4>
-      <h4 class = 'right'> Quantity:
+    <div class = 'tea-body'>
+      <h4>{{tea.name}}</h4>
+      <h5>Price: <span class = 'lighter'>{{tea.price | moneyBags }}</span></h5>
+
+      <h5>Ingredients: <span class = 'lighter'>{{tea.ingredients}}</span></h5>
+      <h5>Rating: <span class = 'lighter'>{{tea.rating}}</span></h5>
+      <h5>In Stock? <span class = 'lighter'>{{tea.inStock | trueYes }}</span></h5>
+      <h5>Categories:</h5>
+          <ul>
+            <li ng-repeat = 'category in tea.categories'>{{category}}</li>
+          </ul>
+    </div>
+    <div class = 'tea-add-caff'>
+         <h4 class = 'right'> Quantity:
       <select class= 'dropdown smaller-input' ng-model ='teaQuantity'>
       <option value = '1'>1</option>
       <option value = '2'>2</option>
@@ -68,28 +79,17 @@
       <option value = '10'>10</option>
     </select>
       <button ng-click = 'addToBag()' class = 'btn btn-warning btn-sm'>Add to Bag</button></h4>
-    </div>
-    <div class = 'tea-body'>
-      <h5>Price: <span class = 'lighter'>{{tea.price | moneyBags }}</span></h5>
-      <h5>Caffeine Scale: <span class = 'lighter'>{{tea.caffeineScale}}</span></h5>
-      <h5>Ingredients: <span class = 'lighter'>{{tea.ingredients}}</span></h5>
-      <h5>Rating: <span class = 'lighter'>{{tea.rating}}</span></h5>
-      <h5>In Stock? <span class = 'lighter'>{{tea.inStock | trueYes }}</span></h5>
-      <h5>Categories:</h5>
-          <ul>
-            <li ng-repeat = 'category in tea.categories'>{{category}}</li>
-          </ul>
-    </div>
+      <div class ='caff-scale'>
+         <h5>Caffeine</h5>
+         <h6> mg/serving: {{tea.caffeineScale}}</h6>
+        <caffeine-meter></caffeine-meter>
+      </div>
   </div>
   </td>
-
 </tr>
-
-
-
 </tbody>
 </table>
-
+</div>
 </div> <!--End all tea info-->
 
 <div ng-show= 'checkout' class= 'checkout-page'>

@@ -88,6 +88,13 @@ app.directive('imageCarousel', function() {
 
 
 
+app.directive('caffeineMeter', function() {
+  return {
+    restrict:'EA',
+    templateUrl: 'partials/directives/caffeine-meter.html',
+  };
+});
+
 
 
 

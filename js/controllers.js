@@ -89,6 +89,7 @@ app.controller('ShoppingContact', ['$scope', '$http', 'ShoppingList', function($
     $scope.title = 'Contact Us!';
 }]);
 
+
 app.controller('Shopping', ['$scope', '$http', 'ShoppingList', function($scope, $http, ShoppingList){
   $scope.teaList = ShoppingList.teaList;
   $scope.shoppingBag = [];

@@ -321,7 +321,7 @@ app.factory('PokeService', function(){
     $scope.pokemonData = [];
     $scope.spriteImage = [];
     var spriteIndex;
-    var index = Math.floor((Math.random()*151));
+    var index = Math.ceil((Math.random()*151));
     $http.get("http://pokeapi.co/api/v1/pokemon/" + index + "/")
       .success(function(data){
         $scope.pokemonData[num] = data;
